@@ -1,0 +1,20 @@
+{%extends 'j_base.html'%}
+{%block body_block%}
+<div class="row mt-5">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div class="card" style="width: 36rem;">
+                <img src="{{profile.profile_pic.url}}" class="card-img-top" alt="..." height="400px">
+                <div class="card-body">
+                     <p class="card-text">Name:{{profile.candidate_name}}</p>
+                    <p class="card-text">Date Of Birth:{{profile.DOB}}</p>
+                    <p class="card-text">Qualification:{{profile.qualification}}</p>
+                    <p class="card-text">Experience in Years:{{profile.experience}}</p>
+                    <p class="card-text">{{profile.skills}}</p>
+                    <a href="{%url 'editprofile' profile.id%}" class="btn btn-primary">EditProfile</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-3"></div>
+    </div>
+{%endblock%}

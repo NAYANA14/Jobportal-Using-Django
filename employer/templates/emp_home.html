@@ -1,0 +1,46 @@
+{%extends 'base.html'%}
+{%block body_block%}
+<div class="row mt-5">
+      <div class="col-4   d-flex  align-items-center justify-content-center">
+  {%if request.user.employer%}
+<div class="card" style="width: 18rem;" height="600px">
+<img src="./images/company.jpg" class="card-img-top" alt="..." height="200px">
+  <div class="card-body">
+    <h5 class="card-title">View Company Profile</h5>
+    <p class="card-text">A company profile is a professional summary that describes a business and what it does. You'll need a professional company profile if you're trying to hook into investors, but you can also use it to people visiting your site for the first time.</p>
+    <a href="{% url 'viewcompany' %}" class="btn btn-primary">View Profile</a>
+  </div>
+</div>
+{%else%}
+<div class="card" style="width: 18rem;" height="600px">
+<img src="./images/company.jpg" class="card-img-top" alt="..."height="200px">
+  <div class="card-body">
+    <h5 class="card-title">Add Company Profile</h5>
+ <p class="card-text">A company profile is a professional summary that describes a business and what it does. You'll need a professional company profile if you're trying to hook into investors, but you can also use it to people visiting your site for the first time.</p>
+    <a href="{% url 'addcompany' %}" class="btn btn-primary">Add Profile</a>
+  </div>
+</div>
+{%endif%}
+</div>
+  <div class="col-4 d-flex  align-items-center justify-content-center">
+    <div class="card" style="width: 18rem;" height="600px">
+<img src="./images/job.jpg" class="card-img-top" alt="..." height="200px">
+  <div class="card-body">
+    <h5 class="card-title">Add Job</h5>
+    <p class="card-text">A job posting is an advertisement for an open job position. The purpose of a job posting is to inform potential job candidates about a new opening and attract them to apply.</p>
+    <a href="{% url 'addjob' %}" class="btn btn-primary">Add Job</a>
+  </div>
+</div>
+  </div>
+  <div class="col-4 d-flex  align-items-center justify-content-center">
+    <div class="card" style="width: 18rem;" height="600px">
+<img src="./images/application.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">View All Applications</h5>
+    <p class="card-text">An application for employment is a standard business document that is prepared with questions deemed relevant by employers. It is used to determine the best candidate to fill a specific role within the company.</p>
+    <a href="{% url 'jobapplications' %}" class="btn btn-primary">Applications</a>
+  </div>
+  </div>
+  </div>
+  </div>
+{%endblock%}

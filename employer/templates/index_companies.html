@@ -1,0 +1,20 @@
+{%extends 'index_base.html'%}
+{%block body_block%}
+
+<div class="container">
+    <div class="row">
+        {%for company in companies%}
+         <div class="col-4 mb-4 ">
+            <div class="card" style="width: 18rem;">
+                <img src="{{company.company_logo.url}}" class="card-img-top " alt="..." height="300px">
+                <div class="card-body">
+                    <p class="card-text text-center ">{{company.company_name}}</p>
+                </div>
+            </div>
+         </div>
+                {%endfor%}
+    </div>
+</div>
+
+
+    {%endblock%}

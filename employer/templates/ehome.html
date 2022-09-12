@@ -1,0 +1,32 @@
+{%extends 'index_base.html'%}
+{%block body_block%}
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8" >
+ {%for job in filter.qs%}
+            <a href="{%url 'viewjob' job.id%}" class="text-decoration-none text-black"><div class="card mb-3 shadow" style="max-width: 54rem;" >
+        <div class="card-header"><strong> {{job.Designation}}-Job Opening in {{job.company.company_name}}</strong></div>
+            <div class="card-body text-left">
+                <div class="row">
+                    <div class="col-6">
+                           <p>Experience:</i> {{job.experience}} years</p>
+           <p>location:{{job.location}}</p>
+                    </div>
+                    <div class="col-6">
+                        <img  src="{{job.company.company_logo.url}}" class="card-img text-end " alt="..." height="100px">
+                    </div>
+                </div>
+
+
+        </div>
+        <div class="card-footer ">Last Date of Submission:{{job.end_date}}<span style="margin-left:400px"> <a href="{%url 'createapplication' job.id%}" class="btn btn-primary"> Apply</a></span></div>
+        </div></a>
+            {%endfor%}
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+
+</div>
+</div>
+{%endblock%}

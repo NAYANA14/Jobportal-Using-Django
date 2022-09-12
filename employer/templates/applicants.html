@@ -1,0 +1,39 @@
+{%extends 'base.html'%}
+{%block body_block%}
+<div class="container">
+    <div class="row">
+        <h1 class="text-center mt-3">APPLICATIONS</h1>
+        <div class="col">
+            {%if applications%}
+            <table class="table mt-3">
+                   <tr>
+                       <th>Candidate Name</th>
+                       <th>Designation</th>
+                        <th>Skills</th>
+                       <th>Qualification</th>
+                       <th>Status</th>
+                </tr>
+                {%for application in applications%}
+                <tr>
+                      <td ><a class="text-black" href="{%url 'applicantprofile' application.id%}">{{application.candidate.candidate_name}}</a></td>
+                    <td >{{application.job.Designation}}</td>
+                    <td>{{application.candidate.skills}}</td>
+                    <td >{{application.candidate.qualification}}</td>
+                    <td>
+                        {%if application.status%}
+                        {{application.status}}
+                        {%else%}
+                        <a href="{%url 'appstatus' application.id%}" class="btn btn-success">Accept</a>
+                        <a href="{%url 'appreject' application.id%}" class="btn btn-danger">Reject</a>
+                        {%endif%}
+
+                </tr>
+                {%endfor%}
+
+            </table>
+{%endif%}
+        </div>
+    </div>
+
+</div>
+{%endblock%}

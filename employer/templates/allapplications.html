@@ -1,0 +1,65 @@
+{%extends 'base.html'%}
+{%block body_block%}
+<div class="container">
+    <div class="row">
+        <h1 class="text-center mt-3">APPLICATIONS</h1>
+        <div class="col">
+            {%if page_obj%}
+            <table class="table mt-3">
+                   <tr>
+                       <th>Candidate Name</th>
+                       <th>Designation</th>
+                        <th>Skills</th>
+                       <th>Qualification</th>
+                       <th>Submitted Date</th>
+                       <th>Status</th>
+                </tr>
+                {%for application in page_obj%}
+                <tr>
+                    <td ><a href="{%url 'applicantprofile' application.id%}">{{application.candidate.candidate_name}}</a></td>
+                    <td >{{application.job.Designation}}</td>
+                    <td>{{application.candidate.skills}}</td>
+                    <td >{{application.candidate.qualification}}</td>
+                    <td>{{application.submitted_date}}</td>
+                    <td>
+                        {%if application.status%}
+                        {{application.status}}
+                        {%else%}
+                        <a href="{%url 'appstatus' application.id%}" class="btn btn-success">Accept</a>
+                        <a href="{%url 'appreject' application.id%}" class="btn btn-danger">Reject</a>
+                        {%endif%}
+                    
+                </tr>
+                {%endfor%}
+
+            </table>
+{%endif%}
+        </div>
+    </div>
+</div>
+<div class="row">
+<div class="col-4"></div>
+         <div class="col-4">
+        <div class="pagination ">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1" class="btn btn-primary">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary">&laquo; previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a  href="?page={{ page_obj.next_page_number }}" class="btn btn-primary">next&raquo;</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-primary">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+    </div>
+</div>
+    </div>
+     <div class="col-4"></div>
+</div>
+{%endblock%}

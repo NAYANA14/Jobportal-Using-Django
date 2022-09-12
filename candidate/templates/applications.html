@@ -1,0 +1,31 @@
+{%extends 'j_base.html'%}
+{%block body_block%}
+<!--{{items}}-->
+  <div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center">Applied Jobs</h1>
+            {%if applications%}
+            <table class="table mt-4">
+                <tr>
+                    <th>Company Name</th>
+                    <th>Designation</th>
+                    <th>Location</th>
+                    <th>Submitted Date</th>
+                    <th>Status</th>
+                </tr>
+                {%for application in applications%}
+                <tr>
+                    <td >{{application.job.company.company_name}}</td>
+                    <td >{{application.job.Designation}}</td>
+                    <td >{{application.job.location}}</td>
+                    <td>{{application.submitted_date}}</td>
+                    <td>{{application.status}}</td>
+                </tr>
+                {%endfor%}
+            </table>
+            {%endif%}
+        </div>
+    </div>
+</div>
+{%endblock%}

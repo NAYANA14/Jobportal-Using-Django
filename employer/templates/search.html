@@ -1,0 +1,33 @@
+{%extends 'index_base.html'%}
+{%block body_block%}
+  <div class="row mt-5 ">
+        <div class="col-lg-2 col-sm-1 col-md-2"></div>
+       <div class="col-lg-8 col-sm-4 col-md-6">
+    {%for job in jobs%}
+             {%if job.end_date >=  today%}
+    <a href="{%url 'viewjob' job.id%}" class="text-decoration-none text-black"><div class="card mb-3 shadow" style="max-width: 54rem;" >
+        <div class="card-header"><strong> {{job.Designation}}-Job Opening in {{job.company.company_name}}</strong></div>
+            <div class="card-body text-left">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-2">
+                           <p>Experience:</i> {{job.experience}} years</p>
+           <p>location:{{job.location}}</p>
+                    </div>
+                    <div class="col-lg-6  col-sm-2">
+                        <img  src="{{job.company.company_logo.url}}" class="card-img text-end " alt="..." height="100px">
+                    </div>
+                </div>
+        </div>
+        <div class="card-footer ">Last Date of Submission:{{job.end_date}}<span style="margin-left:400px">
+            <a href="{%url 'createapplication' job.id%}" class="btn btn-primary"> Apply</a></span>
+        </div>
+    </div></a>
+           </a>
+           {%endif%}
+    {%endfor%}
+           </div>
+         <div class="col-lg-2  col-sm-1 col-md-2"></div>
+</div>
+
+
+{%endblock%}

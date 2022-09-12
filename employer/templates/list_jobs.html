@@ -1,0 +1,66 @@
+{%extends 'base.html'%}
+{%block body_block%}
+<div class="container">
+    <div class="row ">
+        <h1 class="text-center font-bold">POSTED JOBS</h1>
+        <div class="col">
+            {%if   page_obj %}
+            <table class="table">
+                <tr>
+                    <th>Designation</th>
+                    <th>Description</th>
+                    <th>Experience</th>
+                    <th>Skills</th>
+                    <th>vacancies</th>
+                    <th>Location</th>
+                    <th>End Date</th>
+                </tr>
+                {%for job in   page_obj%}
+                <tr>
+                    <td >{{job.Designation}}</td>
+                    <td style="width:600px;">{{job.description}}</td>
+                    <td >{{job.experience}}</td>
+                    <td >{{job.skills}}</td>
+                    <td>{{job.vacancies}}</td>
+                    <td >{{job.location}}</td>
+                    <td >{{job.end_date}}</td>
+                    <td>
+                        {%if job.end_date >=  today %}
+                        <a href="{%url 'editjob' job.id%}" class="btn btn-success">Edit</a>  </td>
+                    {%endif%}
+                       <td> <a href="{%url 'removejob' job.id%}" class="btn btn-danger">Delete</a></td>
+                    <td><a href="{%url 'applicants' job.id%}" class="btn btn-dark">Applications</a></td>
+
+                </tr>
+                {%endfor%}
+            </table>
+            {%else%}
+          <p>You are not posted any job yet</p>
+            {%endif%}
+        </div>
+        </div>
+    </div>
+<div class="row">
+        <div class="col-4"></div>
+         <div class="col-4 text-center">
+        <div class="pagination ">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1" class="btn btn-primary">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary">&laquo; previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a  href="?page={{ page_obj.next_page_number }}" class="btn btn-primary">next&raquo;</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-primary">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+    </div>
+     <div class="col-4"></div>
+    </div>
+{%endblock%}

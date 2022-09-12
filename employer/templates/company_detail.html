@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+{%block body_block%}
+<div class="container">
+<div class="row mt-5">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div class="card" style="width: 36rem;">
+                <img src="{{profile.company_logo.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text"><strong>COMPANY NAME: </strong> {{profile.company_name}}</p>
+                    <p class="card-text"><strong>SERVICES:</strong> {{profile.services}}</p>
+                    <p class="card-text"><strong>WEBSITE:</strong> {{profile.website}}</p>
+                    <p class="card-text"><strong>FOUNDED DATE:</strong> {{profile.founded_date}}</p>
+
+                    <a href="{%url 'editcompany' profile.id%} " class="btn btn-primary">EditProfile</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-3"></div>
+    </div>
+    </div>
+{%endblock%}

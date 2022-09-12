@@ -1,0 +1,21 @@
+{%extends 'base.html'%}
+{%block body_block%}
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <form action=""method="post" >
+                {%csrf_token%}
+                {{form.as_p}}
+                <input type="submit" class="btn btn-primary" value="update" name="form">
+            </form>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+</form>
+</div>
+
+</body>
+</html>
+     {%endblock%}
